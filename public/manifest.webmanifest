@@ -1,0 +1,26 @@
+{
+  "name": "SLGovIQ - Sri Lanka Government Exam IQ Practice",
+  "short_name": "SLGovIQ",
+  "description": "Practice Sinhala IQ papers (බුද්ධි පරීක්ෂණ ගැටලු හා කෙටි ක්‍රම) for Sri Lanka government exams: SLAS, Banking, Development Officers, and Teachers Service.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#010736",
+  "theme_color": "#010736",
+  "orientation": "portrait-primary",
+  "lang": "si",
+  "categories": ["education", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

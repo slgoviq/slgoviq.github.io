@@ -1,0 +1,143 @@
+---
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  canonicalUrl?: string;
+  ogType?: string;
+  lang?: string;
+  googleSiteVerification?: string;
+}
+
+const {
+  title = 'Sinhala IQ Papers | Sri Lanka Gov Exam Practice - SLGovIQ',
+  description = 'Practice Sinhala IQ papers (බුද්ධි පරීක්ෂණ ගැටලු හා කෙටි ක්‍රම) for Sri Lanka government exams: SLAS, Banking Exams, Development Officers, and Teachers Service. Free timed practice exams with instant answers and short methods.',
+  keywords = 'sinhala iq papers, srilanka iq papers, goverment exam iq papers sinhala, slas iq papers, banking exam iq papers sinhala, iq model papers with answers sinhala, sinhala iq short methods, ශ්‍රී ලංකා පරිපාලන සේවය බුද්ධි පරීක්ෂණය, රාජ්‍ය සේවා විභාග බුද්ධි පරීක්ෂණ ගැටලු, සංවර්ධන නිලධාරී විභාගය IQ, ගුරු විභාග IQ sinhala, slgoviq, இலங்கை அரச சேவை நுண்ணறிவு வினாத்தாள்',
+  canonicalUrl = Astro.url.href,
+  ogType = 'website',
+  lang = 'si',
+  googleSiteVerification,
+} = Astro.props;
+
+const siteName = 'SLGovIQ';
+const siteOrigin = 'https://slgoviq.github.io';
+const ogImageUrl = `${siteOrigin}/og-image.png`;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="SLGovIQ" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-Y4VLSX8E6Y"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Y4VLSX8E6Y');
+    </script>
+    
+    <!-- Directives for Search Crawlers -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Multilingual Hreflang Tags for Google LK Indexing -->
+    <link rel="alternate" hreflang="si" href={`${siteOrigin}/`} />
+    <link rel="alternate" hreflang="en" href={`${siteOrigin}/`} />
+    <link rel="alternate" hreflang="ta" href={`${siteOrigin}/`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteOrigin}/`} />
+
+    <!-- Sri Lanka Geotargeting Meta Tags -->
+    <meta name="geo.region" content="LK" />
+    <meta name="geo.placename" content="Colombo, Sri Lanka" />
+    <meta name="geo.position" content="6.9271;79.8612" />
+    <meta name="ICBM" content="6.9271, 79.8612" />
+
+    <!-- Mobile App & PWA Meta Tags -->
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#010736" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SLGovIQ" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="si_LK" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="ta_LK" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SLGovIQ - Sinhala IQ Papers & Sri Lanka Government Exam Practice Platform" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="SLGovIQ - Sinhala IQ Papers & Sri Lanka Government Exam Practice Platform" />
+
+    <!-- Search Engine Webmaster Verification (Google Search Console) -->
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
+
+    <!-- Preconnect & DNS Prefetch to Google Fonts for High PageSpeed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicons & Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Zero-FOUC Dark Mode Initializer -->
+    <script is:inline>
+      (function () {
+        try {
+          var saved = localStorage.getItem('slgoviq_theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col font-sans bg-slate-50/70 text-[#010736] dark:bg-[#010736] dark:text-[#FCF1D0] transition-colors">
+    <Header client:load currentPath={Astro.url.pathname} />
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <Footer client:load />
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://slgoviq.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="si" href="https://slgoviq.github.io/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://slgoviq.github.io/" />
+    <xhtml:link rel="alternate" hreflang="ta" href="https://slgoviq.github.io/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://slgoviq.github.io/" />
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://slgoviq.github.io/papers/iq-model-paper-01-si</loc>
+    <xhtml:link rel="alternate" hreflang="si" href="https://slgoviq.github.io/papers/iq-model-paper-01-si" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://slgoviq.github.io/papers/iq-model-paper-01-en" />
+    <xhtml:link rel="alternate" hreflang="ta" href="https://slgoviq.github.io/papers/iq-model-paper-01-ta" />
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://slgoviq.github.io/papers/iq-model-paper-02-si</loc>
+    <xhtml:link rel="alternate" hreflang="si" href="https://slgoviq.github.io/papers/iq-model-paper-02-si" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://slgoviq.github.io/papers/iq-model-paper-02-en" />
+    <xhtml:link rel="alternate" hreflang="ta" href="https://slgoviq.github.io/papers/iq-model-paper-02-ta" />
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://slgoviq.github.io/papers/iq-model-paper-01-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://slgoviq.github.io/papers/iq-model-paper-01-en" />
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://slgoviq.github.io/papers/iq-model-paper-02-en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://slgoviq.github.io/papers/iq-model-paper-02-en" />
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://slgoviq.github.io/papers/iq-model-paper-01-ta</loc>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://slgoviq.github.io/papers/iq-model-paper-01-ta" />
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://slgoviq.github.io/papers/iq-model-paper-02-ta</loc>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://slgoviq.github.io/papers/iq-model-paper-02-ta" />
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

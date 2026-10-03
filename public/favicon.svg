@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background Rounded Shield -->
+  <rect width="512" height="512" rx="128" fill="#010736" />
+  
+  <!-- Subtle Gradient Accent Ring -->
+  <rect x="16" y="16" width="480" height="480" rx="112" stroke="#22396F" stroke-width="8" opacity="0.6" />
+
+  <!-- Graduation Cap / Intellect Icon in Warm Parchment Cream (#FCF1D0) -->
+  <g transform="translate(64, 80) scale(0.75)" stroke="#FCF1D0" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Cap Diamond -->
+    <polygon points="256,40 472,160 256,280 40,160" fill="#22396F" fill-opacity="0.3" stroke="#FCF1D0" />
+    
+    <!-- Cap Base Arc -->
+    <path d="M120 220 V330 C120 390, 392 390, 392 330 V220" />
+    
+    <!-- Tassel and Ribbon -->
+    <path d="M472 160 V350" />
+    <circle cx="472" cy="370" r="16" fill="#FCF1D0" />
+    
+    <!-- Speed Lightning Bolt in Center for Speed Methods -->
+    <path d="M260 170 L210 270 H270 L240 370 L320 250 H260 Z" fill="#FCF1D0" stroke="#010736" stroke-width="8" />
+  </g>
+
+  <!-- Sri Lanka Gov IQ Branding Text -->
+  <text x="256" y="445" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#FCF1D0" text-anchor="middle" letter-spacing="4">SLGOVIQ</text>
+</svg>

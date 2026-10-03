@@ -1,0 +1,103 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ExamEngine from '../../components/ExamEngine';
+
+export async function getStaticPaths() {
+  const papers = await getCollection('papers');
+  return papers.map((paper) => ({
+    params: { slug: paper.slug },
+    props: { paper },
+  }));
+}
+
+export interface Props {
+  paper: CollectionEntry<'papers'>;
+}
+
+const { paper } = Astro.props;
+const { title, description, seoDescription, language, durationMinutes, category, questions } = paper.data;
+
+const pageTitle = `${title} | SLGovIQ Exam Practice`;
+const resolvedDesc = description || seoDescription;
+const pageDescription =
+  resolvedDesc ||
+  `Practice ${title} with ${questions.length} questions in ${durationMinutes} minutes. Step-by-step short methods and instant scoring.`;
+
+const canonicalUrl = `https://slgoviq.github.io/papers/${paper.slug}`;
+
+// Educational quiz & breadcrumb combined JSON-LD structured schema
+const paperStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://slgoviq.github.io/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: title,
+          item: canonicalUrl,
+        },
+      ],
+    },
+    {
+      '@type': 'Quiz',
+      name: title,
+      description: pageDescription,
+      learningResourceType: 'Practice Exam',
+      inLanguage: language,
+      timeRequired: `PT${durationMinutes}M`,
+      educationalLevel: 'Competitive Examination / Sri Lanka Public Service',
+      isAccessibleForFree: true,
+      about: {
+        '@type': 'Thing',
+        name: category || 'General Intelligence',
+      },
+      hasPart: questions.map((q, idx) => ({
+        '@type': 'Question',
+        name: `Question ${idx + 1}`,
+        text: q.question,
+        suggestedAnswer: q.options.map((opt, optIdx) => ({
+          '@type': 'Answer',
+          text: opt,
+          position: optIdx + 1,
+        })),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: q.options[q.correctIndex],
+          position: q.correctIndex + 1,
+        },
+      })),
+    },
+  ],
+};
+
+const pageKeywords = `${title}, ${category}, sinhala iq papers, srilanka iq papers, goverment exam iq papers sinhala, slas iq papers, banking exam iq papers sinhala, slgoviq`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  canonicalUrl={canonicalUrl}
+  ogType="article"
+  lang={language}
+>
+  <div class="py-4">
+    <ExamEngine client:load paper={paper.data} slug={paper.slug} />
+  </div>
+
+  {/* Structured Data JSON-LD Graph */}
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(paperStructuredData)}
+  />
+</BaseLayout>

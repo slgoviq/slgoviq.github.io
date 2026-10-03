@@ -1,0 +1,446 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LandingContent from '../components/LandingContent';
+
+const allPapers = await getCollection('papers');
+
+// Sort papers so sample papers come first, followed by model papers
+const sortedPapers = [...allPapers].sort((a, b) => {
+  return a.slug.localeCompare(b.slug);
+});
+
+const paperSummaries = sortedPapers.map((p) => ({
+  slug: p.slug,
+  title: p.data.title,
+  language: p.data.language,
+  durationMinutes: p.data.durationMinutes,
+  description: p.data.description || p.data.seoDescription,
+  category: p.data.category,
+  questionCount: p.data.questions.length,
+}));
+
+// Primary Keywords: High search volume queries for Sri Lanka Government IQ preparation
+const pageTitle = 'Sinhala IQ Papers | Sri Lanka Gov Exam Practice (SLAS & Banking) - SLGovIQ';
+const pageDescription = 'Practice Sinhala IQ papers (බුද්ධි පරීක්ෂණ ගැටලු හා කෙටි ක්‍රම) for Sri Lanka government exams: SLAS, Banking Exams, Development Officers, and Teachers Service. Free timed practice exams with instant answers and short methods.';
+const pageKeywords = 'sinhala iq papers, srilanka iq papers, goverment exam iq papers sinhala, slas iq papers, banking exam iq papers sinhala, iq model papers with answers sinhala, sinhala iq short methods, ශ්‍රී ලංකා පරිපාලන සේවය බුද්ධි පරීක්ෂණය, රාජ්‍ය සේවා විභාග බුද්ධි පරීක්ෂණ ගැටලු, සංවර්ධන නිලධාරී විභාගය IQ, ගුරු විභාග IQ sinhala, slgoviq, இலங்கை அரச சேவை நுண்ணறிவு வினாத்தாள், இலங்கை வங்கி பரீட்சை வினாத்தாள்';
+
+const siteOrigin = 'https://slgoviq.github.io';
+
+// Complete Unified Schema.org JSON-LD Graph for Google Search Dominance
+const structuredDataGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteOrigin}/#website`,
+      url: `${siteOrigin}/`,
+      name: 'SLGovIQ',
+      alternateName: [
+        'SL Gov IQ',
+        'Sri Lanka Government Exam IQ Platform',
+        'සිංහල IQ ප්‍රශ්න පත්‍ර',
+        'இலங்கை அரச சேவை நுண்ணறிவு பயிற்சி',
+      ],
+      description: pageDescription,
+      inLanguage: ['si-LK', 'en-US', 'ta-LK'],
+      publisher: {
+        '@id': `${siteOrigin}/#organization`,
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${siteOrigin}/?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+    {
+      '@type': 'EducationalOrganization',
+      '@id': `${siteOrigin}/#organization`,
+      name: 'SLGovIQ Open Education Platform',
+      url: `${siteOrigin}/`,
+      logo: `${siteOrigin}/favicon.svg`,
+      description: 'Open-access educational examination preparation platform providing free timed IQ model papers, short methods, and answer keys for Sri Lankan government examinations.',
+      areaServed: {
+        '@type': 'Country',
+        name: 'Sri Lanka',
+      },
+      sameAs: ['https://github.com/slgoviq/slgoviq.github.io'],
+    },
+    {
+      '@type': 'CollectionPage',
+      '@id': `${siteOrigin}/#webpage`,
+      url: `${siteOrigin}/`,
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: {
+        '@id': `${siteOrigin}/#website`,
+      },
+      about: {
+        '@id': `${siteOrigin}/#organization`,
+      },
+      breadcrumb: {
+        '@id': `${siteOrigin}/#breadcrumb`,
+      },
+      primaryImageOfPage: `${siteOrigin}/og-image.png`,
+      inLanguage: 'si-LK',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${siteOrigin}/#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home (මුල් පිටුව)',
+          item: `${siteOrigin}/`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Sinhala IQ Papers (සිංහල IQ ප්‍රශ්න පත්‍ර)',
+          item: `${siteOrigin}/#papers`,
+        },
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      name: 'Sri Lanka Government Exam IQ Model Papers Catalog',
+      description: 'Free timed IQ practice papers for SLAS, Banking, and Sri Lanka Public Service examinations.',
+      itemListElement: sortedPapers.map((paper, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${siteOrigin}/papers/${paper.slug}`,
+        name: paper.data.title,
+        description: paper.data.description || paper.data.seoDescription,
+      })),
+    },
+    {
+      '@type': 'Course',
+      name: 'Sri Lanka Government Exam General Intelligence (IQ) Preparation',
+      description: 'Master General Intelligence and speed shortcuts for SLAS, Banking, Development Officers, and Teachers examinations.',
+      provider: {
+        '@id': `${siteOrigin}/#organization`,
+      },
+      isAccessibleForFree: true,
+      educationalLevel: 'Competitive Examination / Sri Lanka Public Service',
+      hasCourseInstance: {
+        '@type': 'CourseInstance',
+        courseMode: 'online',
+        courseWorkload: 'PT60M',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Where can I find Sinhala IQ papers with answers for Sri Lanka government exams?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'SLGovIQ (https://slgoviq.github.io) provides free, interactive timed Sinhala IQ model papers with instant scoring and step-by-step short methods for SLAS, Banking, and Public Service competitive exams.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'ශ්‍රී ලංකා පරිපාලන සේවය (SLAS) සහ බැංකු විභාග සඳහා සිංහල IQ ප්‍රශ්න පත්‍ර නොමිලේ පුහුණු විය හැක්කේ කෙසේද?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'SLGovIQ වෙබ් අඩවියෙන් (https://slgoviq.github.io) ශ්‍රී ලංකා පරිපාලන සේවය (SLAS), රාජ්‍ය බැංකු තරඟ විභාග (BOC, People\'s Bank, NSB), සහ සංවර්ධන නිලධාරී විභාග සඳහා නියමිත කාල සීමාව (ටයිමරය) සහිතව ප්‍රශ්න 50 සම්පූර්ණ ආදර්ශ ප්‍රශ්න පත්‍ර නොමිලේ පුහුණු විය හැකිය. සෑම ප්‍රශ්නයකටම පියවරෙන් පියවර කෙටි විසඳුම් ක්‍රම (Short Methods) ලබා දී ඇත.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What competitive exams in Sri Lanka require the IQ (General Intelligence) paper?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Sri Lanka Administrative Service (SLAS), Central Bank of Sri Lanka (CBSL), Bank of Ceylon (BOC), People\'s Bank, National Savings Bank (NSB), Sri Lanka Teachers\' Service (SLTS), Management Service Officers (PMAS), and Police Sub-Inspector exams all require the General Intelligence / IQ paper.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How do short methods help in Sri Lankan government IQ exams?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Most government IQ exams require answering 50 questions in 60 minutes (about 72 seconds per question). Short methods and mental shortcuts allow candidates to solve complex seating arrangements, number series, and logical syllogisms in under 45 seconds.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'රජයේ විභාග සඳහා IQ ප්‍රශ්න පත්‍රයක සාමාන්‍ය ලකුණු මට්ටම සහ කාලය කොපමණද?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'බොහෝ රජයේ තරඟ විභාගවල බුද්ධි පරීක්ෂණ පත්‍රය ප්‍රශ්න 50කින් සමන්විත වන අතර මිනිත්තු 60ක කාලයක් ලැබේ. සම්මුඛ පරීක්ෂණ කැඳවීම් සඳහා ලකුණු 70ට වඩා ඉහළ ලකුණු ප්‍රමාණයක් ලබා ගැනීම තරඟකාරී වාසියක් ලබා දෙයි.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Are SLGovIQ model exam papers free to practice online?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, 100% free with no registration, no ads, and full client-side privacy. Practice with real countdown timers and instant result breakdowns.',
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  keywords={pageKeywords}
+  canonicalUrl="https://slgoviq.github.io/"
+  lang="si"
+>
+  <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-14">
+    {/* Reactive Trilingual Landing Content Island */}
+    <LandingContent client:load papers={paperSummaries} />
+
+    {/* ========================================================================= */}
+    {/* CRAWLER-TARGETED SEMANTIC SEO & STUDY HUB */}
+    {/* ========================================================================= */}
+    <section class="mt-20 border-t border-[#22396F]/15 dark:border-[#22396F]/30 pt-14 text-slate-700 dark:text-[#FCF1D0]/80">
+      <div class="space-y-12">
+        {/* Main Section Header */}
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#22396F] dark:text-[#FCF1D0]">
+            Complete Government Exam Study Guide & Syllabus Matrix
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#010736] dark:text-[#FCF1D0] mt-1">
+            Sri Lanka Government Exam IQ Papers (සිංහල මාධ්‍ය බුද්ධි පරීක්ෂණ ප්‍රශ්න පත්‍ර හා කෙටි ක්‍රම)
+          </h2>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-[#FCF1D0]/80 max-w-3xl">
+            Welcome to <strong>SLGovIQ</strong>, Sri Lanka's leading open-access exam practice portal dedicated to helping state service candidates master <strong>General Intelligence (බුද්ධි පරීක්ෂණය)</strong> and <strong>Quantitative Aptitude</strong>. Whether you are preparing in Sinhala (සිංහල), English, or Tamil (தமிழ்), our interactive practice papers help you build exam hall speed and problem-solving confidence.
+          </p>
+        </div>
+
+        {/* 1. Exam Syllabus & Pattern Comparison Table (Targeting Google Featured Snippets) */}
+        <div class="rounded-2xl border border-[#22396F]/15 bg-white p-6 shadow-sm dark:border-[#22396F]/30 dark:bg-[#0D1C42]">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-base font-bold text-[#010736] dark:text-[#FCF1D0]">
+                Official Sri Lanka State Examination Structure & IQ Paper Matrix
+              </h3>
+              <p class="text-xs text-slate-500 dark:text-[#FCF1D0]/70 mt-0.5">
+                Overview of questions, time allocation, and scoring targets for major government examinations.
+              </p>
+            </div>
+            <span class="hidden sm:inline-block rounded-md bg-[#FCF1D0] px-2.5 py-1 text-[11px] font-bold text-[#010736] border border-[#22396F]/20 dark:bg-[#010736] dark:text-[#FCF1D0]">
+              2025/2026 Updated
+            </span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-[#22396F]/15 dark:border-[#22396F]/30 bg-slate-50/80 dark:bg-[#010736]/60">
+                  <th class="p-3 font-bold text-[#010736] dark:text-[#FCF1D0]">Examination (විභාගය)</th>
+                  <th class="p-3 font-bold text-[#010736] dark:text-[#FCF1D0]">Paper Format</th>
+                  <th class="p-3 font-bold text-[#010736] dark:text-[#FCF1D0]">Time / Q</th>
+                  <th class="p-3 font-bold text-[#010736] dark:text-[#FCF1D0]">Target Score</th>
+                  <th class="p-3 font-bold text-[#010736] dark:text-[#FCF1D0]">Key Focus Areas</th>
+                  <th class="p-3 font-bold text-[#010736] dark:text-[#FCF1D0]">Practice Link</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-[#22396F]/20 text-slate-600 dark:text-[#FCF1D0]/75">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-[#010736]/30 transition-colors">
+                  <td class="p-3 font-semibold text-[#010736] dark:text-[#FCF1D0]">
+                    SLAS (ශ්‍රී ලංකා පරිපාලන සේවය)
+                  </td>
+                  <td class="p-3">50 MCQs / 60 Mins</td>
+                  <td class="p-3 font-mono font-medium text-[#22396F] dark:text-[#FCF1D0]">72s</td>
+                  <td class="p-3">70+ / 100</td>
+                  <td class="p-3">Circular Seating, 3D Cubes, Matrix Logic, Deductions</td>
+                  <td class="p-3">
+                    <a href="/papers/iq-model-paper-02-si" class="font-bold text-[#22396F] underline dark:text-[#FCF1D0]">
+                      Paper 02 (සිංහල) &rarr;
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-[#010736]/30 transition-colors">
+                  <td class="p-3 font-semibold text-[#010736] dark:text-[#FCF1D0]">
+                    State Banks (BOC, People's, NSB)
+                  </td>
+                  <td class="p-3">50 MCQs / 60 Mins</td>
+                  <td class="p-3 font-mono font-medium text-[#22396F] dark:text-[#FCF1D0]">72s</td>
+                  <td class="p-3">75+ / 100</td>
+                  <td class="p-3">Speed Math, Number Series, Percentage, Profit & Loss</td>
+                  <td class="p-3">
+                    <a href="/papers/iq-model-paper-02-en" class="font-bold text-[#22396F] underline dark:text-[#FCF1D0]">
+                      Paper 02 (English) &rarr;
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-[#010736]/30 transition-colors">
+                  <td class="p-3 font-semibold text-[#010736] dark:text-[#FCF1D0]">
+                    Development Officers (සංවර්ධන නිලධාරී)
+                  </td>
+                  <td class="p-3">50 MCQs / 60 Mins</td>
+                  <td class="p-3 font-mono font-medium text-[#22396F] dark:text-[#FCF1D0]">72s</td>
+                  <td class="p-3">65+ / 100</td>
+                  <td class="p-3">Pattern Recognition, Venn Diagrams, Syllogisms</td>
+                  <td class="p-3">
+                    <a href="/papers/iq-model-paper-01-si" class="font-bold text-[#22396F] underline dark:text-[#FCF1D0]">
+                      Paper 01 (Sample) &rarr;
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-[#010736]/30 transition-colors">
+                  <td class="p-3 font-semibold text-[#010736] dark:text-[#FCF1D0]">
+                    Teachers' Service (ගුරු සේවා විභාගය)
+                  </td>
+                  <td class="p-3">40-50 MCQs / 60 Mins</td>
+                  <td class="p-3 font-mono font-medium text-[#22396F] dark:text-[#FCF1D0]">72-90s</td>
+                  <td class="p-3">60+ / 100</td>
+                  <td class="p-3">Spatial Reasoning, Blood Relations, Coding & Decoding</td>
+                  <td class="p-3">
+                    <a href="/papers/iq-model-paper-01-en" class="font-bold text-[#22396F] underline dark:text-[#FCF1D0]">
+                      Paper 01 (English) &rarr;
+                    </a>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-[#010736]/30 transition-colors">
+                  <td class="p-3 font-semibold text-[#010736] dark:text-[#FCF1D0]">
+                    Tamil Medium Government Exams (அரச பரீட்சை)
+                  </td>
+                  <td class="p-3">50 MCQs / 60 Mins</td>
+                  <td class="p-3 font-mono font-medium text-[#22396F] dark:text-[#FCF1D0]">72s</td>
+                  <td class="p-3">70+ / 100</td>
+                  <td class="p-3">நுண்ணறிவு, வேக கணித முறைகள், தர்க்கவியல்</td>
+                  <td class="p-3">
+                    <a href="/papers/iq-model-paper-02-ta" class="font-bold text-[#22396F] underline dark:text-[#FCF1D0]">
+                      Paper 02 (தமிழ்) &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* 2. Target Examination Categories Detailed Grid */}
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div class="rounded-2xl border border-[#22396F]/15 bg-white p-6 shadow-sm dark:border-[#22396F]/30 dark:bg-[#0D1C42]">
+            <h3 class="text-base font-bold text-[#010736] dark:text-[#FCF1D0] flex items-center gap-2">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#010736] text-[11px] font-bold text-[#FCF1D0] dark:bg-[#FCF1D0] dark:text-[#010736]">1</span>
+              <span>SLAS & Public Administration (ශ්‍රී ලංකා පරිපාලන සේවය)</span>
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-[#FCF1D0]/75 leading-relaxed">
+              The Sri Lanka Administrative Service (SLAS) Open and Limited Competitive Examinations feature high-level analytical IQ, data sufficiency, and circular seating deduction problems. Our model papers match the exact difficulty level of the Department of Examinations syllabus.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-[#22396F]/15 bg-white p-6 shadow-sm dark:border-[#22396F]/30 dark:bg-[#0D1C42]">
+            <h3 class="text-base font-bold text-[#010736] dark:text-[#FCF1D0] flex items-center gap-2">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#010736] text-[11px] font-bold text-[#FCF1D0] dark:bg-[#FCF1D0] dark:text-[#010736]">2</span>
+              <span>Banking Sector Competitive Exams (රාජ්‍ය බැංකු විභාග)</span>
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-[#FCF1D0]/75 leading-relaxed">
+              Trainee Executive (TE) and Staff Assistant competitive tests conducted by Bank of Ceylon (BOC), People's Bank, National Savings Bank (NSB), and the Central Bank of Sri Lanka place heavy weight on speed math, profit & loss, number sequences, and compound ratio calculations.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-[#22396F]/15 bg-white p-6 shadow-sm dark:border-[#22396F]/30 dark:bg-[#0D1C42]">
+            <h3 class="text-base font-bold text-[#010736] dark:text-[#FCF1D0] flex items-center gap-2">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#010736] text-[11px] font-bold text-[#FCF1D0] dark:bg-[#FCF1D0] dark:text-[#010736]">3</span>
+              <span>Development Officers Service (සංවර්ධන නිලධාරී විභාගය)</span>
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-[#FCF1D0]/75 leading-relaxed">
+              Development Officers Service competitive examinations test rapid logical syllogisms, Venn diagrams, pattern recognition, and clock/calendar calculations. Practicing with our strict timers trains candidates to avoid common multiple-choice traps.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-[#22396F]/15 bg-white p-6 shadow-sm dark:border-[#22396F]/30 dark:bg-[#0D1C42]">
+            <h3 class="text-base font-bold text-[#010736] dark:text-[#FCF1D0] flex items-center gap-2">
+              <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[#010736] text-[11px] font-bold text-[#FCF1D0] dark:bg-[#FCF1D0] dark:text-[#010736]">4</span>
+              <span>Teachers' Service & PMAS (ගුරු සේවා සහ කළමනාකරණ සේවා)</span>
+            </h3>
+            <p class="mt-2 text-xs sm:text-sm text-slate-600 dark:text-[#FCF1D0]/75 leading-relaxed">
+              Sri Lanka Teachers' Service (SLTS) and Public Management Assistant Service (PMAS) papers require swift spatial reasoning, blood relations, and code-decoding skills. Our short methods break down each question into straightforward rules.
+            </p>
+          </div>
+        </div>
+
+        {/* 3. Core IQ Topics Covered with Short Methods */}
+        <div class="rounded-2xl border border-[#22396F]/15 bg-white p-6 shadow-sm dark:border-[#22396F]/30 dark:bg-[#0D1C42]">
+          <h3 class="text-base font-bold text-[#010736] dark:text-[#FCF1D0] mb-3">
+            Core IQ Topics Covered with Short Methods (ආවරණය වන ප්‍රධාන මාතෘකා හා කෙටි ක්‍රම)
+          </h3>
+          <div class="grid gap-3 sm:grid-cols-3 text-xs text-slate-600 dark:text-[#FCF1D0]/75">
+            <div class="rounded-lg bg-slate-50/80 p-3 border border-[#22396F]/10 dark:bg-[#010736]/60 dark:border-[#22396F]/30">
+              <strong class="text-[#010736] dark:text-[#FCF1D0] block mb-1">සංඛ්‍යා රටා (Number Series)</strong>
+              <span>Squares of primes, difference progressions, alternate operations, and Fibonacci progressions.</span>
+            </div>
+            <div class="rounded-lg bg-slate-50/80 p-3 border border-[#22396F]/10 dark:bg-[#010736]/60 dark:border-[#22396F]/30">
+              <strong class="text-[#010736] dark:text-[#FCF1D0] block mb-1">අසුන් ගැන්වීම් (Seating Arrangement)</strong>
+              <span>Circular facing inside/outside deductions, linear positions, and 8-person multi-constraint logic.</span>
+            </div>
+            <div class="rounded-lg bg-slate-50/80 p-3 border border-[#22396F]/10 dark:bg-[#010736]/60 dark:border-[#22396F]/30">
+              <strong class="text-[#010736] dark:text-[#FCF1D0] block mb-1">වේගය සහ දුර (Speed & Distance)</strong>
+              <span>Relative speed of passing trains, platform lengths, average speeds, and boat/stream vectors.</span>
+            </div>
+            <div class="rounded-lg bg-slate-50/80 p-3 border border-[#22396F]/10 dark:bg-[#010736]/60 dark:border-[#22396F]/30">
+              <strong class="text-[#010736] dark:text-[#FCF1D0] block mb-1">මිනිස් දින සහ වැඩ (Time & Work)</strong>
+              <span>Inverse proportionality formulas, efficiency multipliers, and group work ratios.</span>
+            </div>
+            <div class="rounded-lg bg-slate-50/80 p-3 border border-[#22396F]/10 dark:bg-[#010736]/60 dark:border-[#22396F]/30">
+              <strong class="text-[#010736] dark:text-[#FCF1D0] block mb-1">ලේ ඥාති සබඳතා (Blood Relations)</strong>
+              <span>Family hierarchy mapping, symbolic relationships, and generational deduction trees.</span>
+            </div>
+            <div class="rounded-lg bg-slate-50/80 p-3 border border-[#22396F]/10 dark:bg-[#010736]/60 dark:border-[#22396F]/30">
+              <strong class="text-[#010736] dark:text-[#FCF1D0] block mb-1">තාර්කික නිගමන (Syllogisms)</strong>
+              <span>Venn diagram proofs, 'all/some/none' statement testing, and logical consistency checks.</span>
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Crawler-Direct Crawlable Internal Links (Guarantees PageRank Flow) */}
+        <div class="rounded-2xl border border-[#22396F]/15 bg-white p-6 shadow-sm dark:border-[#22396F]/30 dark:bg-[#0D1C42]">
+          <h3 class="text-base font-bold text-[#010736] dark:text-[#FCF1D0] mb-2">
+            Practice Model Exam Papers Directory (ප්‍රශ්න පත්‍ර නාමාවලිය)
+          </h3>
+          <p class="text-xs text-slate-500 dark:text-[#FCF1D0]/70 mb-4">
+            Click directly on any paper to launch the timed practice interface with full solutions and short methods.
+          </p>
+          <div class="grid gap-3 sm:grid-cols-2 text-xs">
+            {sortedPapers.map((paper) => (
+              <a
+                href={`/papers/${paper.slug}`}
+                class="group flex flex-col justify-between rounded-xl border border-[#22396F]/15 bg-slate-50/70 p-3.5 transition-all hover:border-[#22396F] hover:bg-white dark:border-[#22396F]/30 dark:bg-[#010736]/60 dark:hover:bg-[#010736]"
+              >
+                <div>
+                  <div class="flex items-center justify-between text-[10px] font-bold text-[#22396F] dark:text-[#FCF1D0] mb-1">
+                    <span class="uppercase tracking-wider">{paper.data.category || 'General Intelligence'}</span>
+                    <span class="rounded bg-[#FCF1D0] px-1.5 py-0.5 text-[#010736] font-semibold dark:bg-[#22396F] dark:text-[#FCF1D0]">
+                      {paper.data.language.toUpperCase()}
+                    </span>
+                  </div>
+                  <span class="font-bold text-[#010736] group-hover:text-[#22396F] dark:text-[#FCF1D0] dark:group-hover:text-white transition-colors">
+                    {paper.data.title}
+                  </span>
+                </div>
+                <div class="mt-2.5 flex items-center justify-between text-[11px] text-slate-500 dark:text-[#FCF1D0]/70 font-medium">
+                  <span>{paper.data.questions.length} Questions • {paper.data.durationMinutes} Minutes</span>
+                  <span class="font-bold text-[#22396F] group-hover:translate-x-0.5 transition-transform dark:text-[#FCF1D0]">
+                    Start Exam &rarr;
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  {/* Structured Data: Full Schema.org JSON-LD Graph */}
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(structuredDataGraph)}
+  />
+</BaseLayout>

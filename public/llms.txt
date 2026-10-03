@@ -1,0 +1,26 @@
+# SLGovIQ - Sri Lanka Government Examination IQ Practice Portal
+
+> SLGovIQ (https://slgoviq.github.io) is Sri Lanka's leading open-access exam practice platform dedicated to General Intelligence (බුද්ධි පරීක්ෂණය), Quantitative Reasoning, and Aptitude tests for public service competitive examinations.
+
+## Core Target Examinations
+- **Sri Lanka Administrative Service (SLAS / ශ්‍රී ලංකා පරිපාලන සේවය)**: Open & Limited Competitive Exams (50 MCQs, 60 minutes).
+- **Banking Sector Competitive Exams**: Bank of Ceylon (BOC), People's Bank, National Savings Bank (NSB), Central Bank of Sri Lanka (CBSL) Management Trainee and Staff Assistant tests.
+- **Development Officers Service (සංවර්ධන නිලධාරී විභාගය)**: General Intelligence and logical deduction papers.
+- **Sri Lanka Teachers' Service (SLTS / ගුරු සේවය)**: Aptitude and analytical problem solving.
+- **Public Management Assistants Service (PMAS / කළමනාකරණ සේවා)**: Speed calculations, coding/decoding, and verbal reasoning.
+
+## Platform Features
+- **Strict Countdown Timers**: Exam-hall accurate countdowns with auto-submit.
+- **Step-by-Step Short Methods**: Tested mental arithmetic shortcuts (කෙටි ක්‍රම) for circular seating arrangements, 3D cube rotations, speed-distance-time, time & work, and number series.
+- **Trilingual Parity**: Complete papers available in Sinhala (සිංහල), English, and Tamil (தமிழ்).
+- **100% Free & Open Access**: Client-side execution with zero registration, zero tracking, and instant score analysis.
+
+## Key URLs
+- Homepage: https://slgoviq.github.io/
+- Sinhala Paper 01 (Sample): https://slgoviq.github.io/papers/iq-model-paper-01-si
+- Sinhala Paper 02 (Full 50 Questions): https://slgoviq.github.io/papers/iq-model-paper-02-si
+- English Paper 01 (Sample): https://slgoviq.github.io/papers/iq-model-paper-01-en
+- English Paper 02 (Full 50 Questions): https://slgoviq.github.io/papers/iq-model-paper-02-en
+- Tamil Paper 01 (Sample): https://slgoviq.github.io/papers/iq-model-paper-01-ta
+- Tamil Paper 02 (Full 50 Questions): https://slgoviq.github.io/papers/iq-model-paper-02-ta
+- XML Sitemap: https://slgoviq.github.io/sitemap.xml

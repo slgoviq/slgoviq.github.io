@@ -1,0 +1,29 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Googlebot specific directives
+User-agent: Googlebot
+Allow: /
+
+# Googlebot Mobile
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Applebot
+User-agent: Applebot
+Allow: /
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemaps
+Sitemap: https://slgoviq.github.io/sitemap.xml
+
+# Host
+Host: https://slgoviq.github.io
