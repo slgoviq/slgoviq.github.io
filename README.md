@@ -4,9 +4,11 @@
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support_the_Developer-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/kishara)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 > **Website:** [https://slgoviq.github.io](https://slgoviq.github.io)
+> **Support:** [https://ko-fi.com/kishara](https://ko-fi.com/kishara)
 
 **SLGovIQ** is an open-access, client-side exam practice platform tailored specifically for Sri Lankan public sector competitive examination candidates. It offers realistic exam hall simulations, strict countdown timers, and step-by-step **Short Methods (කෙටි ක්‍රම / குறுக்கு வழிகள்)** in **Sinhala (සිංහල)**, **English**, and **Tamil (தமிழ்)**.
 
@@ -70,6 +72,13 @@ npm run dev
 # Build for production
 npm run build
 ```
+
+---
+
+## ☕ Support the Developer
+
+If you find SLGovIQ helpful for your exam preparation, consider supporting the developer:
+👉 **[Support on Ko-fi](https://ko-fi.com/kishara)**
 
 ---
 

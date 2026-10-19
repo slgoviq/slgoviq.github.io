@@ -14,6 +14,7 @@ import {
   Zap,
   X,
   ChevronRight,
+  Coffee,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { FormattedText } from './FormattedText';
@@ -644,6 +645,16 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({ paper, slug = 'paper' })
               >
                 <ArrowLeft className="h-3.5 w-3.5" />
                 {t.backToPapers}
+              </a>
+
+              <a
+                href="https://ko-fi.com/kishara"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-amber-300/80 bg-amber-50 px-4 py-2 text-xs font-bold text-amber-900 shadow-sm transition-colors hover:bg-amber-100 dark:border-amber-700/50 dark:bg-amber-950/40 dark:text-amber-200 dark:hover:bg-amber-900/50"
+              >
+                <Coffee className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+                <span>{t.supportDeveloper}</span>
               </a>
             </div>
           </div>

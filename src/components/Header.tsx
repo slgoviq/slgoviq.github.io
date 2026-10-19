@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
-import { Sun, Moon, Globe, ChevronDown, Check, GraduationCap } from 'lucide-react';
+import { Sun, Moon, Globe, ChevronDown, Check, GraduationCap, Coffee } from 'lucide-react';
 import { themeStore, toggleTheme, initTheme } from '../stores/themeStore';
 import { currentLanguageStore, setLanguage, initLanguage, translations, type Language } from '../stores/i18nStore';
 
@@ -76,6 +76,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPath = '/' }) => {
               {t.backToPapers}
             </a>
           )}
+
+          {/* Support Developer (Ko-fi) */}
+          <a
+            href="https://ko-fi.com/kishara"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[#22396F]/20 bg-white px-2.5 py-1.5 text-xs font-semibold text-[#010736] shadow-sm transition-all hover:bg-slate-50 hover:border-[#22396F]/40 focus:outline-none focus:ring-2 focus:ring-[#22396F] dark:border-[#22396F]/30 dark:bg-[#0D1C42] dark:text-[#FCF1D0] dark:hover:bg-[#142555]"
+            title="Support the Developer"
+            aria-label="Support the Developer"
+          >
+            <Coffee className="h-3.5 w-3.5 text-amber-500" />
+            <span className="hidden sm:inline">Support</span>
+          </a>
 
           {/* Language Selector Dropdown */}
           <div className="relative" ref={dropdownRef}>

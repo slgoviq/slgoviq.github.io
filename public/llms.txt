@@ -24,3 +24,4 @@
 - Tamil Paper 01 (Sample): https://slgoviq.github.io/papers/iq-model-paper-01-ta
 - Tamil Paper 02 (Full 50 Questions): https://slgoviq.github.io/papers/iq-model-paper-02-ta
 - XML Sitemap: https://slgoviq.github.io/sitemap.xml
+- Support the Developer: https://ko-fi.com/kishara

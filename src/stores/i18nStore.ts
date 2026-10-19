@@ -84,6 +84,7 @@ export interface Translations {
   // Footer
   footerPlatform: string;
   footerRights: string;
+  supportDeveloper: string;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -177,6 +178,7 @@ export const translations: Record<Language, Translations> = {
     ],
     footerPlatform: 'Sri Lanka Government Exam Practice Platform',
     footerRights: 'Open Exam Practice Platform',
+    supportDeveloper: 'Support the Developer',
   },
   si: {
     appName: 'SLGovIQ',
@@ -268,6 +270,7 @@ export const translations: Record<Language, Translations> = {
     ],
     footerPlatform: 'ශ්‍රී ලංකා රාජ්‍ය විභාග පෙරහුරු වේදිකාව',
     footerRights: 'විවෘත විභාග පෙරහුරු වේදිකාව',
+    supportDeveloper: 'Support the Developer (සංවර්ධකයාට සහය වන්න)',
   },
   ta: {
     appName: 'SLGovIQ',
@@ -359,6 +362,7 @@ export const translations: Record<Language, Translations> = {
     ],
     footerPlatform: 'இலங்கை அரச போட்டிப் பரீட்சை பயிற்சி தளம்',
     footerRights: 'திறந்த பரீட்சை பயிற்சி தளம்',
+    supportDeveloper: 'Support the Developer (ஆதரவளிக்க)',
   },
 };
 
